@@ -1,15 +1,103 @@
 ---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import {
+	SITE_DESCRIPTION,
+	SITE_TITLE,
+	AUTHOR_NAME,
+	AUTHOR_TITLE,
+	AUTHOR_DESCRIPTION,
+	AUTHOR_AVATAR,
+	OG_IMAGE,
+} from '../consts';
+
+const allPosts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const recentPosts = allPosts.slice(0, 5);
+
+const formatDate = (date: Date) => {
+	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	return `${months[date.getMonth()]} ${date.getDate()}`;
+};
 ---
 
+<!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="min-h-screen">
+		<Header />
+		<main class="mx-auto max-w-[640px] px-6">
+			<img
+				src={OG_IMAGE}
+				alt={`${AUTHOR_NAME} — ${AUTHOR_TITLE}`}
+				class="rise mt-10 w-full rounded-2xl border border-line object-cover shadow-[0_20px_60px_-30px_color-mix(in_oklab,var(--accent)_35%,transparent)]"
+			/>
+
+			<section class="flex items-center gap-7 py-12 max-sm:flex-col max-sm:pb-4 max-sm:pt-8 max-sm:text-center">
+				<div class="rise shrink-0" style="--d: .08s">
+					<div class="rounded-full bg-gradient-to-br from-accent to-accent-light p-[2.5px] shadow-[0_10px_40px_-10px_color-mix(in_oklab,var(--accent)_55%,transparent)]">
+						<img
+							class="block h-24 w-24 rounded-full object-cover max-sm:h-16 max-sm:w-16"
+							src={AUTHOR_AVATAR}
+							alt={AUTHOR_NAME}
+						/>
+					</div>
+				</div>
+				<div class="min-w-0 flex-1">
+					<p class="rise m-0 mb-2 font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-accent" style="--d: .12s">
+						{AUTHOR_TITLE}
+					</p>
+					<h1 class="rise m-0 mb-3 text-[2.1rem] font-extrabold leading-[1.1] tracking-[-0.035em] text-heading max-sm:text-[1.7rem]" style="--d: .18s">
+						Hello, I'm {AUTHOR_NAME}
+					</h1>
+					<p class="rise m-0 font-serif text-[1.0625rem] leading-relaxed text-muted" style="--d: .26s">
+						{AUTHOR_DESCRIPTION}
+					</p>
+				</div>
+			</section>
+
+			<section class="rise mt-4 pb-8" style="--d: .34s">
+				<div class="mb-5 flex items-center justify-between border-t border-line pt-8">
+					<h2
+						class="relative m-0 pl-[0.875rem] text-lg font-bold tracking-tight text-heading before:absolute before:left-0 before:top-1/2 before:h-[1.125rem] before:w-[3px] before:-translate-y-1/2 before:rounded-sm before:bg-gradient-to-b before:from-accent before:to-accent-light before:content-['']"
+					>
+						Latest Posts
+					</h2>
+					<a
+						href="/blog"
+						class="group inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-1.5 font-mono text-[0.78rem] font-medium text-muted no-underline transition-all duration-300 ease-fluid hover:border-accent/50 hover:text-accent"
+					>
+						View all
+						<span class="transition-transform duration-300 ease-fluid group-hover:translate-x-0.5">→</span>
+					</a>
+				</div>
+				<ul class="m-0 flex list-none flex-col p-0">
+					{
+						recentPosts.map((post) => (
+							<li class="border-b border-line/60 last:border-b-0">
+								<a
+									href={`/blog/${post.id}/`}
+									class="group -mx-3 flex items-center gap-6 rounded-lg px-3 py-[1.05rem] no-underline transition-colors duration-300 ease-fluid hover:bg-accent/[0.05]"
+								>
+									<span class="min-w-[70px] shrink-0 font-mono text-[0.75rem] tabular-nums tracking-tight text-faint transition-colors duration-300 group-hover:text-accent">
+										{formatDate(post.data.pubDate)}
+									</span>
+									<h3 class="m-0 flex-1 text-[0.95rem] font-semibold leading-normal tracking-[-0.01em] text-heading transition-colors duration-300 group-hover:text-accent">
+										{post.data.title}
+									</h3>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
 	</body>
 </html>

@@ -1,0 +1,63 @@
+---
+import { SOCIAL_LINKS } from '../consts';
+
+const today = new Date();
+const iconClass =
+	'text-muted transition-all duration-300 ease-fluid hover:-translate-y-0.5 hover:text-accent';
+---
+
+<footer
+	class="border-t border-line bg-surface px-4 py-8 text-center transition-colors"
+>
+	<p class="m-0 font-mono text-[0.72rem] tracking-[0.08em] text-faint">
+		&copy; 2019 – {today.getFullYear()} Itay Podhajcer
+	</p>
+	<div class="mt-5 flex justify-center gap-6">
+		{
+			SOCIAL_LINKS.github && (
+				<a class={iconClass} href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer">
+					<span class="sr-only">GitHub</span>
+					<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28">
+						<path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+					</svg>
+				</a>
+			)
+		}
+		{
+			SOCIAL_LINKS.twitter && (
+				<a class={iconClass} href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener noreferrer">
+					<span class="sr-only">X</span>
+					<svg viewBox="0 0 512 512" aria-hidden="true" width="24" height="24">
+						<path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+					</svg>
+				</a>
+			)
+		}
+		{
+			SOCIAL_LINKS.linkedin && (
+				<a class={iconClass} href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer">
+					<span class="sr-only">LinkedIn</span>
+					<svg viewBox="0 0 448 512" aria-hidden="true" width="26" height="26">
+						<path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+					</svg>
+				</a>
+			)
+		}
+		{
+			SOCIAL_LINKS.stackoverflow && (
+				<a class={iconClass} href={SOCIAL_LINKS.stackoverflow} target="_blank" rel="noopener noreferrer">
+					<span class="sr-only">Stack Overflow</span>
+					<svg viewBox="0 0 24 24" aria-hidden="true" width="28" height="28">
+						<path fill="currentColor" d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154Z" />
+					</svg>
+				</a>
+			)
+		}
+		<a class={iconClass} href="/rss.xml">
+			<span class="sr-only">RSS feed</span>
+			<svg viewBox="0 0 448 512" aria-hidden="true" width="26" height="26">
+				<path fill="currentColor" d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64zM0 416a64 64 0 1 1 128 0 64 64 0 1 1-128 0zM0 224c0-17.7 14.3-32 32-32 141.4 0 256 114.6 256 256 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-106-86-192-192-192-17.7 0-32-14.3-32-32z" />
+			</svg>
+		</a>
+	</div>
+</footer>
