@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const allPosts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const groupedPosts = allPosts.reduce(
+	(acc, post) => {
+		const year = post.data.pubDate.getFullYear().toString();
+		if (!acc[year]) acc[year] = [];
+		acc[year].push(post);
+		return acc;
+	},
+	{} as Record<string, typeof allPosts>,
+);
+
+const sortedYears = Object.keys(groupedPosts).sort((a, b) => parseInt(b) - parseInt(a));
+
+const formatDate = (date: Date) => {
+	const month = String(date.getMonth() + 1).padStart(2, '0');
+	const day = String(date.getDate()).padStart(2, '0');
+	return `${month}-${day}`;
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Blog · ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main class="mx-auto max-w-[720px] px-5 pb-16 pt-8 max-sm:px-4">
+			<section class="leading-relaxed">
+				{
+					sortedYears.map((year) => (
+						<div class="mb-10" id={`year-${year}`}>
+							<h2 class="m-0 mb-4 flex items-center gap-3 text-xl font-extrabold tracking-tight text-heading">
+								<span class="h-5 w-1 rounded-sm bg-gradient-to-b from-accent to-accent-light" />
+								{year}
+								<span class="rounded-full bg-surface-soft px-2.5 py-1 font-mono text-[0.68rem] font-normal tracking-wide text-muted">
+									{groupedPosts[year].length} posts
+								</span>
+							</h2>
+							<ul class="m-0 list-none p-0">
+								{groupedPosts[year].map((post) => (
+									<li>
+										<a
+											href={`/blog/${post.id}/`}
+											class="group flex items-baseline gap-5 rounded-lg px-2 py-2 no-underline transition-colors duration-300 ease-fluid hover:bg-accent/[0.05] max-sm:flex-col max-sm:gap-1"
+										>
+											<span class="min-w-[64px] shrink-0 font-mono text-[0.75rem] tabular-nums text-faint transition-colors duration-300 group-hover:text-accent">
+												{formatDate(post.data.pubDate)}
+											</span>
+											<h3 class="m-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold tracking-[-0.01em] text-heading transition-colors duration-300 group-hover:text-accent max-sm:whitespace-normal">
+												{post.data.title}
+											</h3>
+											{post.data.tags && post.data.tags.length > 0 && (
+												<div class="flex shrink-0 flex-wrap gap-1.5">
+													{post.data.tags.slice(0, 3).map((tag) => (
+														<span class="rounded bg-surface-soft px-1.5 py-0.5 font-mono text-[0.62rem] text-muted">
+															#{tag}
+														</span>
+													))}
+													{post.data.tags.length > 3 && (
+														<span class="rounded bg-surface-soft px-1.5 py-0.5 font-mono text-[0.62rem] text-muted">
+															...{post.data.tags.length - 3}
+														</span>
+													)}
+												</div>
+											)}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
