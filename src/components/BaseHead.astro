@@ -1,9 +1,9 @@
 ---
 import '../styles/global.css';
-import { SITE_DESCRIPTION, SITE_TITLE, OG_IMAGE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, HOME_TITLE, OG_IMAGE } from '../consts';
 
 interface Props {
-	title: string;
+	title?: string;
 	description?: string;
 	image?: string;
 	date?: string | Date;
@@ -12,6 +12,15 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description = SITE_DESCRIPTION, image = OG_IMAGE, date } = Astro.props;
+
+// Tab/SEO title: inner pages get a `· Itay Podhajcer` suffix; the home page (no
+// `title` prop) uses HOME_TITLE. Social cards show the bare title alongside og:site_name.
+const pageTitle = title ? `${title} · ${SITE_TITLE}` : HOME_TITLE;
+const socialTitle = title ?? SITE_TITLE;
+
+// Only blog posts pass a `date`; mark those as articles for OG/SEO crawlers.
+const isoDate = date ? (typeof date === 'object' ? date.toISOString().split('T')[0] : date) : undefined;
+const ogType = isoDate ? 'article' : 'website';
 ---
 
 {/* Apply the theme before first paint to avoid a flash of the wrong theme (FOIT).
@@ -53,19 +62,21 @@ const { title, description = SITE_DESCRIPTION, image = OG_IMAGE, date } = Astro.
 
 <link rel="canonical" href={canonicalURL} />
 
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
-{date && <meta name="date" content={typeof date === 'object' ? date.toISOString().split('T')[0] : date} />}
+{isoDate && <meta name="date" content={isoDate} />}
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:title" content={socialTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+{isoDate && <meta property="article:published_time" content={isoDate} />}
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={socialTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />

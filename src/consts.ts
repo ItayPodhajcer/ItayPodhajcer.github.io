@@ -2,6 +2,8 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'Itay Podhajcer';
+// Browser-tab / SEO title for the home page (other pages append `· ${SITE_TITLE}`).
+export const HOME_TITLE = 'Itay Podhajcer · Personal Blog';
 export const SITE_DESCRIPTION =
 	'Tech expert with 20+ years of experience across roles such as CTO, Chief Architect, and Consultant. 3× Microsoft MVP, passionate blogger, and open-source contributor.';
 export const AUTHOR_NAME = 'Itay Podhajcer';
