@@ -8,7 +8,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://ItayPodhajcer.github.io',
+	site: 'https://itaypodhajcer.com',
 	vite: {
 		plugins: [tailwindcss()],
 	},
@@ -25,14 +25,15 @@ export default defineConfig({
 				codeFontFamily: "'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
 				codeLineHeight: '1.7142857em',
 				borderRadius: '0.5rem',
-				frameBorderWidth: '1px',
-				frameShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
-				containerPaddingBlock: '0.75rem',
-				containerPaddingInline: '1rem',
+				borderWidth: '1px',
+				codePaddingBlock: '0.75rem',
+				codePaddingInline: '1rem',
+				frames: {
+					frameBoxShadowCssValue: '0 2px 12px rgba(0, 0, 0, 0.1)',
+				},
 			},
 			frames: {
-				showCopyButton: true,
-				showLanguageBadge: true,
+				showCopyToClipboardButton: true,
 			},
 			useDarkModeMediaQuery: false,
 			themeCssSelector: (theme) => {
