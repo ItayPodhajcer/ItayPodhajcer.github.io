@@ -4,7 +4,6 @@ description: "Ollama is a framework that simplifies deployment and interaction w
 pubDate: "2024-06-03T15:57:57.556Z"
 heroImage: "./1_sPjZ8CQFRD1vvmJW_r5fVg.png"
 heroImageAlt: "Running Ollama on Azure Kubernetes Service"
-mediumUrl: "https://medium.com/@itaypodhajcer/running-ollama-on-azure-kubernetes-service-d98378e10ef7"
 tags:
   - "AI"
   - "Cloud Computing"

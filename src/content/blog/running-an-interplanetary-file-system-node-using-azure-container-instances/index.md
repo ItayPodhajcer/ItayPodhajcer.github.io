@@ -4,7 +4,6 @@ description: "The InterPlanetary File System (IPFS) is a protocol and a network 
 pubDate: "2020-01-19T17:28:51.430Z"
 heroImage: "./1_9uWu80WNrABQE8R4OdaG1g.png"
 heroImageAlt: "Running an InterPlanetary File System Node Using Azure Container Instances"
-mediumUrl: "https://medium.com/@itaypodhajcer/running-an-interplanetary-file-system-node-using-azure-container-instances-5627814a48f5"
 tags:
   - "IPFS"
   - "Azure"

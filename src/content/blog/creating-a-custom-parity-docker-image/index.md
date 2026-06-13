@@ -4,7 +4,6 @@ description: "Creating a custom Parity Ethereum Client Docker image is done by w
 pubDate: "2019-12-29T08:31:43.389Z"
 heroImage: "./1_Gxwlbo0O8vEjcwuspdYkAg.png"
 heroImageAlt: "Creating a Custom Parity Docker Image"
-mediumUrl: "https://medium.com/@itaypodhajcer/creating-a-custom-parity-docker-image-b59fc8aa2140"
 tags:
   - "Docker"
   - "Ethereum"

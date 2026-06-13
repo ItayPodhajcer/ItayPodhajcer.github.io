@@ -4,7 +4,6 @@ description: "With all the hype around generative AI and the question of whether
 pubDate: "2023-09-11T16:26:26.737Z"
 heroImage: "./1_y3v8EGSed29qg4lQJ1zU1Q.png"
 heroImageAlt: "Using Generative AI for a Self-Evolving Software Component"
-mediumUrl: "https://medium.com/@itaypodhajcer/using-generative-ai-for-a-self-evolving-software-component-1d090d8974b2"
 tags:
   - "OpenAI"
   - "Software Development"

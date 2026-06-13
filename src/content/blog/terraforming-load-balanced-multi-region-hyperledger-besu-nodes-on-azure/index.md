@@ -4,7 +4,6 @@ description: "Hyperledger Besu, an enterprise ready Ethereum client developed by
 pubDate: "2020-02-24T23:04:14.466Z"
 heroImage: "./1_u-NS63TPXINuYWHScxbEzA.png"
 heroImageAlt: "Terraforming Load Balanced Multi-Region Hyperledger Besu Nodes on Azure"
-mediumUrl: "https://medium.com/@itaypodhajcer/terraforming-load-balanced-multi-region-hyperledger-besu-nodes-on-azure-c9c705b72728"
 tags:
   - "Azure"
   - "Terraform"

@@ -4,7 +4,6 @@ description: "The NVIDIA GPU Operator simplifies the use of NVIDIA GPUs in Kuber
 pubDate: "2024-08-27T13:13:15.467Z"
 heroImage: "./1_ejNohnDNCEPzO3uodwDqZw.png"
 heroImageAlt: "Making the Most of GPU Nodes on Azure Kubernetes Service Using the Nvidia GPU Operator"
-mediumUrl: "https://medium.com/@itaypodhajcer/making-the-most-of-gpu-nodes-on-azure-kubernetes-service-using-the-nvidia-gpu-operator-39b9f1431549"
 tags:
   - "AI"
   - "Cloud Computing"

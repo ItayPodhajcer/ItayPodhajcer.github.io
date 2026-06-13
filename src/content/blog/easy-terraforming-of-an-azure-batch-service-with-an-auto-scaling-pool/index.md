@@ -4,7 +4,6 @@ description: "Azure Batch service, a job scheduling and computing power allocati
 pubDate: "2021-01-13T16:27:52.825Z"
 heroImage: "./1_mcsRZppsIUq7EYLXV6d57g.png"
 heroImageAlt: "Easy Terraforming of an Azure Batch Service with an Auto-Scaling Pool"
-mediumUrl: "https://medium.com/@itaypodhajcer/easy-terraforming-of-an-azure-batch-service-with-an-auto-scaling-pool-1938e9ffab6f"
 tags:
   - "Azure"
   - "DevOps"

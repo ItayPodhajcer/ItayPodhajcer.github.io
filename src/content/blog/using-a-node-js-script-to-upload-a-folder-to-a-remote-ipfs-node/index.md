@@ -4,7 +4,6 @@ description: "Not always running ipfs add or browsing to the webui to upload a f
 pubDate: "2020-01-29T17:04:42.971Z"
 heroImage: "./1_vosPWAjOMrmMmidNUNyi9Q.png"
 heroImageAlt: "Using a Node.js Script to Upload a Folder to a Remote IPFS Node"
-mediumUrl: "https://medium.com/@itaypodhajcer/using-a-node-js-script-to-upload-a-folder-to-a-remote-ipfs-node-255fa9e3b766"
 tags:
   - "IPFS"
   - "NodeJS"

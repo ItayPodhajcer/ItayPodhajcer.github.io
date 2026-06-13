@@ -4,7 +4,6 @@ description: "Now that Ethereum’s merge is behind us, where Eth1 and Eth2 are 
 pubDate: "2022-09-29T21:02:42.066Z"
 heroImage: "./1_IssiOqaj_7lb-t_i8GFdUQ.png"
 heroImageAlt: "Running Ethereum’s Execution & Consensus Nodes on Azure Kubernetes Service"
-mediumUrl: "https://medium.com/@itaypodhajcer/running-ethereums-execution-consensus-nodes-on-azure-kubernetes-service-f433ab3f0737"
 tags:
   - "Azure"
   - "Ethereum"

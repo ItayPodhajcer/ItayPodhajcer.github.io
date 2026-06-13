@@ -4,7 +4,6 @@ description: "Decentralized identifier documents are a new type of digital ident
 pubDate: "2023-05-30T14:56:54.448Z"
 heroImage: "./1_nX0N_hySmLRHAPxN6ImGBQ.png"
 heroImageAlt: "Simple Decentralized Identifier (DID) Document Hosting on Azure"
-mediumUrl: "https://medium.com/@itaypodhajcer/simple-decentralized-identifier-did-document-hosting-on-azure-ec8b5b139d1"
 tags:
   - "Web3"
   - "Cloud Computing"

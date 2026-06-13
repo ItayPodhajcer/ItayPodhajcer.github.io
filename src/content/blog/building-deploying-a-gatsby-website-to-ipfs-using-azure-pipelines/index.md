@@ -4,7 +4,6 @@ description: "The InterPlanetary File System (IPFS) is not meant just for storin
 pubDate: "2020-02-02T10:39:08.943Z"
 heroImage: "./1_1qDxr864Qztsf5t3YJAxcw.png"
 heroImageAlt: "Building & Deploying a Gatsby Website to IPFS Using Azure Pipelines"
-mediumUrl: "https://medium.com/@itaypodhajcer/building-deploying-a-gatsby-website-to-ipfs-using-azure-pipelines-7dd095a861fb"
 tags:
   - "IPFS"
   - "Azure DevOps"

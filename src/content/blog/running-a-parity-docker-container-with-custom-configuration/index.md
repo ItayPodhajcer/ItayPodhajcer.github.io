@@ -4,7 +4,6 @@ description: "Running the Parity Ethereum Client as a Docker container with a cu
 pubDate: "2019-12-22T11:13:33.736Z"
 heroImage: "./1_RY_gvGJZlPcuQU03-3iJLQ.png"
 heroImageAlt: "Running a Parity Docker Container with Custom Configuration"
-mediumUrl: "https://medium.com/@itaypodhajcer/running-a-parity-docker-container-with-custom-configuration-938ba0ecde3e"
 tags:
   - "Docker"
   - "Ethereum"

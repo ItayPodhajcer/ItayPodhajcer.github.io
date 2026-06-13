@@ -4,7 +4,6 @@ description: "GitHub Actions allow us to automate software workflows, such as co
 pubDate: "2020-07-13T14:36:15.965Z"
 heroImage: "./1_R_cytTlgLFDi3_H0Qh8lGQ.png"
 heroImageAlt: "Creating a JavaScript GitHub Action for Generating Ethereum Addresses"
-mediumUrl: "https://medium.com/@itaypodhajcer/creating-a-javascript-github-action-for-generating-ethereum-addresses-793ed1b82627"
 tags:
   - "GitHub"
   - "NodeJS"

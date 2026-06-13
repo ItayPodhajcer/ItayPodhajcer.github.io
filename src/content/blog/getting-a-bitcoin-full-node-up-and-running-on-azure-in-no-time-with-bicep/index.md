@@ -4,7 +4,6 @@ description: "Bitcoin, which requires no introduction, the world’s first crypt
 pubDate: "2022-03-21T13:50:39.622Z"
 heroImage: "./1_sFilHI9T4VC8YsV_CYiZLg.png"
 heroImageAlt: "Getting a Bitcoin Full Node Up and Running on Azure in No Time with Bicep"
-mediumUrl: "https://medium.com/@itaypodhajcer/getting-a-bitcoin-full-node-up-and-running-on-azure-in-no-time-with-bicep-a5fcb3080633"
 tags:
   - "Azure"
   - "Bitcoin"

@@ -4,7 +4,6 @@ description: "One of Hyperledger Besu’s enterprise features, is it’s ability
 pubDate: "2020-03-03T22:26:14.312Z"
 heroImage: "./1_22XSvN5lr4BFTWHe1fhP6g.png"
 heroImageAlt: "Use Auth0 JWT Tokens for Authenticating to a Hyperledger Besu Node"
-mediumUrl: "https://medium.com/@itaypodhajcer/use-auth0-jwt-tokens-for-authenticating-to-a-hyperledger-besu-node-dae6b9c1ceba"
 tags:
   - "Hyperledger"
   - "Auth0"

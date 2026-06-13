@@ -4,7 +4,6 @@ description: "etcd, a distributed reliable key value store, is the mechanism use
 pubDate: "2020-03-26T17:53:53.488Z"
 heroImage: "./1_4RBFByfRgVnPmfw61A99ug.png"
 heroImageAlt: "Terraforming a Serverless etcd Cluster on Azure"
-mediumUrl: "https://medium.com/@itaypodhajcer/terraforming-a-serverless-etcd-cluster-on-azure-112cf9891c9"
 tags:
   - "Azure"
   - "Etcd"

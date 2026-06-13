@@ -4,7 +4,6 @@ description: "Pulumi, an open source cloud development platform that supports mu
 pubDate: "2020-07-06T14:09:13.598Z"
 heroImage: "./1_--g8uCgiVJJ7ibOLUW83qw.png"
 heroImageAlt: "Deploying a Geo-Redundant Serverless RabbitMQ Cluster on Azure Using Pulumi for .NET"
-mediumUrl: "https://medium.com/@itaypodhajcer/deploying-a-geo-redundant-serverless-rabbitmq-cluster-on-azure-using-pulumi-for-net-71e6b417378d"
 tags:
   - "Azure"
   - "RabbitMQ"
