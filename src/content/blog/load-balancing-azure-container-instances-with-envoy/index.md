@@ -4,7 +4,6 @@ description: "Azure Container Instances are a very convenient and easy-to-use bu
 pubDate: "2020-10-19T14:43:48.994Z"
 heroImage: "./1_AgzWQLv17EI-mdVqg1vwnA.png"
 heroImageAlt: "Load Balancing Azure Container Instances with Envoy"
-mediumUrl: "https://medium.com/@itaypodhajcer/load-balancing-azure-container-instances-with-envoy-4daf1f4c378c"
 tags:
   - "Azure"
   - "Terraform"

@@ -4,7 +4,6 @@ description: "The most important piece of information for every Ethereum wallet 
 pubDate: "2020-12-03T14:45:31.683Z"
 heroImage: "./1_PHS5a7go31lWIHtIkG4eLw.png"
 heroImageAlt: "Simple Ethereum Wallets Management with Azure Key Vault"
-mediumUrl: "https://medium.com/@itaypodhajcer/simple-ethereum-wallets-management-with-azure-key-vault-2b701bc0505"
 tags:
   - "Azure"
   - "Azure Functions"

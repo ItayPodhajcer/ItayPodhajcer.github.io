@@ -4,7 +4,6 @@ description: "EthSigner, an Ethereum transaction signer which separates private 
 pubDate: "2021-04-20T17:03:02.680Z"
 heroImage: "./1_pge7atS51lG3BxPmW7FoEw.png"
 heroImageAlt: "Easily Terraforming an EthSigner with an Azure Key Vault HSM Based Key"
-mediumUrl: "https://medium.com/@itaypodhajcer/easily-terraforming-an-ethsigner-with-an-azure-key-vault-hsm-based-key-110e25dcc588"
 tags:
   - "Azure"
   - "Ethereum"

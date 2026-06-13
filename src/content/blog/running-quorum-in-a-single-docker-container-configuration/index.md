@@ -4,7 +4,6 @@ description: "J.P. Morgan Chase’s Quorum is one of the currently available per
 pubDate: "2020-02-18T09:31:25.795Z"
 heroImage: "./1_7CeAWfvhqay4EDvijivNTQ.png"
 heroImageAlt: "Running Quorum in a Single Docker Container Configuration"
-mediumUrl: "https://medium.com/@itaypodhajcer/running-quorum-in-a-single-docker-container-configuration-fa1cc3552e48"
 tags:
   - "Quorum"
   - "Jp Morgan"

@@ -4,7 +4,6 @@ description: "StableStudio is a web-based application that allows users to creat
 pubDate: "2023-07-31T18:35:30.058Z"
 heroImage: "./1_Bvo_7ZMNDGboAwliU7jD8g.png"
 heroImageAlt: "Easily Running Stability AI’s StableStudio on Azure"
-mediumUrl: "https://medium.com/@itaypodhajcer/easily-running-stability-ais-stablestudio-on-azure-312042feec6d"
 tags:
   - "AI"
   - "Azure"

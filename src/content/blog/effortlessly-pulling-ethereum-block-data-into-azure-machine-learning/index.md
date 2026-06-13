@@ -4,7 +4,6 @@ description: "Azure Machine Learning, Microsoft’s managed machine leaning serv
 pubDate: "2021-06-04T11:59:40.730Z"
 heroImage: "./1_c3GOiq1ooXrY7DngtyEt7Q.png"
 heroImageAlt: "Effortlessly Pulling Ethereum Block Data into Azure Machine Learning"
-mediumUrl: "https://medium.com/@itaypodhajcer/effortlessly-pulling-ethereum-block-data-into-azure-machine-learning-c37d181a0f23"
 tags:
   - "Azure"
   - "Ethereum"

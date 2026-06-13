@@ -4,7 +4,6 @@ description: "The biggest challenge when developing stateful services, is synchr
 pubDate: "2021-10-12T15:40:28.862Z"
 heroImage: "./1_uMC61qsYlAT-A5SfQ9gc9Q.png"
 heroImageAlt: "Geo-Redundant Stateful Service Made Easy with ASP.NET Core, .NEXT and Azure Virtual Machines"
-mediumUrl: "https://medium.com/@itaypodhajcer/geo-redundant-stateful-service-made-easy-with-asp-net-core-next-and-azure-virtual-machines-950843bb26fd"
 tags:
   - "AspNetCore"
   - "Dotnet"

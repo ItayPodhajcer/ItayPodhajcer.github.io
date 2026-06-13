@@ -4,7 +4,6 @@ description: "Non-fungible tokens (NFTs), one of the hottest topics in the block
 pubDate: "2022-01-31T16:09:46.896Z"
 heroImage: "./1_B0LEdPb5D2yyaIN1AIxswg.png"
 heroImageAlt: "Simple NFT Interacting Azure Bot"
-mediumUrl: "https://medium.com/@itaypodhajcer/simple-nft-interacting-azure-bot-cabcf1dc4ca9"
 tags:
   - "Azure"
   - "NFT"

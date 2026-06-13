@@ -4,7 +4,6 @@ description: "ION is a decentralized layer two, public, permissionless network f
 pubDate: "2022-08-22T17:58:24.996Z"
 heroImage: "./1_Bkn0QunN7HzW0Z6G4fmXQw.png"
 heroImageAlt: "Deploying ION Node’s Microservices on Azure Virtual Machines"
-mediumUrl: "https://medium.com/@itaypodhajcer/deploying-ion-nodes-microservices-on-azure-virtual-machines-b5c7c70cb3f5"
 tags:
   - "Web3"
   - "Azure"

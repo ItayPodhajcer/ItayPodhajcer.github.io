@@ -4,7 +4,6 @@ description: "Azure Blockchain Service, Microsoft Azure’s managed blockchain o
 pubDate: "2021-02-15T18:28:02.425Z"
 heroImage: "./1_HoupioN3zptefzoQxOUGAA.png"
 heroImageAlt: "Simple Terraform Wrapper Module for Deploying an Azure Blockchain Service"
-mediumUrl: "https://medium.com/@itaypodhajcer/simple-terraform-wrapper-module-for-deploying-an-azure-blockchain-service-9cf294b2f112"
 tags:
   - "Azure"
   - "DevOps"

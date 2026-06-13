@@ -4,7 +4,6 @@ description: "A while back I did an article on how to deploy EthSigner on Azure.
 pubDate: "2022-11-14T16:51:59.232Z"
 heroImage: "./1_wOsiqSvY81S56BCuvol8xw.png"
 heroImageAlt: "Setting up ConsenSys's Quorum Key Manager on Azure"
-mediumUrl: "https://medium.com/@itaypodhajcer/setting-up-consensyss-quorum-key-manager-on-azure-7929c53ab1ff"
 tags:
   - "Web3"
   - "Software Engineering"

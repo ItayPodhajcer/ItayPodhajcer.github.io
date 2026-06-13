@@ -4,7 +4,6 @@ description: "Most commonly, Azure Pipelines is used to build, publish and/or de
 pubDate: "2020-02-10T20:57:12.297Z"
 heroImage: "./1_wW2gnuDrCddSnfZtMaFcmg.png"
 heroImageAlt: "Using Azure Pipelines to Generate a .NET Package from a Solidity Contract's ABI"
-mediumUrl: "https://medium.com/@itaypodhajcer/using-azure-pipelines-to-generate-a-net-package-from-a-solidity-contracts-abi-bd6002198184"
 tags:
   - "Solidity"
   - "Ethereum"

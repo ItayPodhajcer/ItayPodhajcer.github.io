@@ -4,7 +4,6 @@ description: "Creating Docker container images with build pipeline, whether itâ€
 pubDate: "2022-01-02T12:02:53.759Z"
 heroImage: "./1_B4CusUrdphweSrHLjWcbog.png"
 heroImageAlt: "Easily Create Azure VM Custom Linux Images for ASP.NET Core Services with GitHub Actions and Packer"
-mediumUrl: "https://medium.com/@itaypodhajcer/easily-create-azure-vm-custom-linux-images-for-asp-net-core-services-with-github-actions-and-packer-4abd34540980"
 tags:
   - "Azure"
   - "GitHub Actions"

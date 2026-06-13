@@ -4,7 +4,6 @@ description: "The Parity Ethereum client is not an enterprise targeted implement
 pubDate: "2020-03-11T13:44:26.625Z"
 heroImage: "./1_yTCqgPRl-nSUGXUof7WBLg.png"
 heroImageAlt: "Using Azure API Management to Limit Access to a Parity Ethereum Node"
-mediumUrl: "https://medium.com/@itaypodhajcer/using-azure-api-management-to-limit-access-to-a-parity-ethereum-node-3449226e29e5"
 tags:
   - "Ethereum"
   - "Azure"

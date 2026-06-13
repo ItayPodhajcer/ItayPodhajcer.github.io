@@ -4,7 +4,6 @@ description: "Azure Confidential Ledger, a managed and decentralized ledger for 
 pubDate: "2023-01-17T14:58:11.896Z"
 heroImage: "./1_62GtIyxZ2JH81WqyUBAtkg.png"
 heroImageAlt: "Easily Terraforming & Interacting with an Azure Confidential Ledger"
-mediumUrl: "https://medium.com/@itaypodhajcer/easily-terraforming-interacting-with-an-azure-confidential-ledger-374c75a582b"
 tags:
   - "Azure"
   - "Cloud Computing"

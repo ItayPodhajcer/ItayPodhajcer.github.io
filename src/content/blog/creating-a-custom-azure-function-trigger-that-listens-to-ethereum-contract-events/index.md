@@ -4,7 +4,6 @@ description: "More common than not, blockchain based systems and solutions are m
 pubDate: "2020-01-12T17:36:41.002Z"
 heroImage: "./1_3DT4IMJYY3y7LTaFASCv1A.png"
 heroImageAlt: "Creating a Custom Azure Function Trigger That Listens to Ethereum Contract Events"
-mediumUrl: "https://medium.com/@itaypodhajcer/creating-a-custom-azure-function-trigger-that-listens-to-ethereum-contract-events-e4e1a70a524a"
 tags:
   - "Ethereum"
   - "Azure Functions"

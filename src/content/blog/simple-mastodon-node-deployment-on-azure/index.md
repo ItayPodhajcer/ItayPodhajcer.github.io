@@ -4,7 +4,6 @@ description: "Mastodon is a decentralized social media network that lets users c
 pubDate: "2023-03-15T16:43:03.661Z"
 heroImage: "./1_rbTANitE5AXzbTl0tw3r8Q.png"
 heroImageAlt: "Simple Mastodon Node Deployment on Azure"
-mediumUrl: "https://medium.com/@itaypodhajcer/simple-mastodon-node-deployment-on-azure-f79f40114d74"
 tags:
   - "Azure"
   - "Web3"

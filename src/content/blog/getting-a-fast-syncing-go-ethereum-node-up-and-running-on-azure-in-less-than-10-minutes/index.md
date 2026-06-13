@@ -4,7 +4,6 @@ description: "As Ethereum’s mainnet state continue to grow, it also lengthens 
 pubDate: "2021-07-19T14:24:43.289Z"
 heroImage: "./1_-keWwaWuEBimGC_0qlhHqA.png"
 heroImageAlt: "Getting a Fast-Syncing Go Ethereum Node Up and Running on Azure in Less Than 10 Minutes"
-mediumUrl: "https://medium.com/@itaypodhajcer/getting-a-fast-syncing-go-ethereum-node-up-and-running-on-azure-in-less-than-10-minutes-cb805864c051"
 tags:
   - "Azure"
   - "Ethereum"

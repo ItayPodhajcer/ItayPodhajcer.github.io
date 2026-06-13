@@ -4,7 +4,6 @@ description: "Occasionally, some scenarios require non-orthodox deployments, whe
 pubDate: "2020-09-14T18:05:35.573Z"
 heroImage: "./1_s1G7bGhTnA5pUS6UGK3LAw.png"
 heroImageAlt: "Terraforming a Serverless MongoDB Replica Set with Split Horizon DNS on Azure and Cloudflare"
-mediumUrl: "https://medium.com/@itaypodhajcer/terraforming-a-serverless-mongodb-replica-set-with-split-horizon-dns-on-azure-and-cloudflare-9687e37dacf1"
 tags:
   - "Azure"
   - "DevOps"

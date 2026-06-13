@@ -4,7 +4,6 @@ description: "Semantic Kernel is an open-source SDK that lets you easily build a
 pubDate: "2024-01-24T15:33:26.261Z"
 heroImage: "./1_sj6yuxyGjZDxKldgyUVR0A.png"
 heroImageAlt: "A Simple UniswapV3 Assistant with Azure OpenAI & Semantic Kernel"
-mediumUrl: "https://medium.com/@itaypodhajcer/a-simple-uniswapv3-assistant-with-azure-openai-semantic-kernel-f47b138959af"
 tags:
   - "OpenAI"
   - "Web3"

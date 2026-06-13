@@ -4,7 +4,6 @@ description: "In real world scenarios, a developer usually doesn’t deploy a so
 pubDate: "2020-01-06T11:53:26.901Z"
 heroImage: "./1_1sH9wQWru9M4lJr2Pb_rhg.png"
 heroImageAlt: "Using Azure DevOps Pipelines to Build a Solidity Smart Contract"
-mediumUrl: "https://medium.com/@itaypodhajcer/using-azure-devops-pipelines-to-build-a-solidity-smart-contract-a5b448d540fd"
 tags:
   - "Solidity"
   - "Azure DevOps"

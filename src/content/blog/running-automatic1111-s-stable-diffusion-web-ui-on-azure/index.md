@@ -4,7 +4,6 @@ description: "Automatic1111 Stable Diffusion Web UI is a web interface for Stabl
 pubDate: "2024-03-06T15:07:42.270Z"
 heroImage: "./1_EiVofp_TN0i0vCkVUQj1Yg.png"
 heroImageAlt: "Running Automatic1111’s Stable Diffusion Web UI on Azure"
-mediumUrl: "https://medium.com/@itaypodhajcer/running-automatic1111s-stable-diffusion-web-ui-on-azure-22b3299413ba"
 tags:
   - "AI"
   - "Software Engineering"
