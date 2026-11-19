@@ -508,7 +508,7 @@ const isDark = 'dark';
 
 	.results-info mark {
 		background-color: var(--accent);
-		color: white;
+		color: var(--bg-primary);
 		padding: 0.125rem 0.375rem;
 		border-radius: 0.375rem;
 		font-weight: 500;
@@ -585,7 +585,7 @@ const isDark = 'dark';
 	}
 
 	.search-results mark {
-		background-color: rgba(249, 115, 22, 0.2) !important;
+		background-color: color-mix(in oklab, var(--accent) 20%, transparent) !important;
 		color: var(--accent) !important;
 		font-weight: 500 !important;
 		padding: 0.125rem 0.25rem !important;

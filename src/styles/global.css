@@ -4,39 +4,40 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ── Palette ──
-   Single source of truth, in OKLCH with warm-tinted neutrals: paper-like in
-   light mode, warm near-black in dark mode. Switches under `.dark` and is
-   consumed by Tailwind tokens (below) and the prose/widget CSS. */
+   Single source of truth, in OKLCH with cool, slightly blue-tinted neutrals
+   that pair with Swale's mint accent (#0c7e60 light / #4ff0c6 dark). Switches
+   under `.dark` and is consumed by Tailwind tokens (below) and the
+   prose/widget CSS. */
 :root {
-	--accent: oklch(58% 0.17 42);
-	--accent-hover: oklch(52% 0.17 40);
-	--accent-light: oklch(76% 0.12 55);
-	--text-primary: oklch(23% 0.012 50);
-	--text-secondary: oklch(37% 0.012 50);
-	--text-muted: oklch(52% 0.014 55);
-	--text-faint: oklch(66% 0.012 60);
-	--bg-primary: oklch(98.2% 0.004 85);
-	--bg-secondary: oklch(96% 0.005 85);
-	--bg-tertiary: oklch(93.5% 0.006 85);
-	--border-color: oklch(90% 0.007 80);
-	--codeblock-bg: oklch(94.5% 0.005 85);
+	--accent: oklch(52.8% 0.1042 168);
+	--accent-hover: oklch(48.56% 0.0952 168.2);
+	--accent-light: oklch(72% 0.11 170);
+	--text-primary: oklch(23% 0.012 255);
+	--text-secondary: oklch(37% 0.012 255);
+	--text-muted: oklch(52% 0.013 255);
+	--text-faint: oklch(66% 0.011 255);
+	--bg-primary: oklch(98.5% 0.003 240);
+	--bg-secondary: oklch(96.5% 0.004 240);
+	--bg-tertiary: oklch(94% 0.005 240);
+	--border-color: oklch(90.5% 0.006 245);
+	--codeblock-bg: oklch(95% 0.004 240);
 	--glow-alpha: 7%;
 	--noise-alpha: 0.022;
 }
 
 html.dark {
-	--accent: oklch(76% 0.15 55);
-	--accent-hover: oklch(81% 0.14 60);
-	--accent-light: oklch(85% 0.1 65);
-	--text-primary: oklch(94.5% 0.006 80);
-	--text-secondary: oklch(82% 0.009 75);
-	--text-muted: oklch(63% 0.011 70);
-	--text-faint: oklch(49% 0.011 70);
-	--bg-primary: oklch(17.5% 0.007 60);
-	--bg-secondary: oklch(21.5% 0.008 60);
-	--bg-tertiary: oklch(26% 0.009 60);
-	--border-color: oklch(29% 0.009 60);
-	--codeblock-bg: oklch(21.5% 0.008 60);
+	--accent: oklch(86.13% 0.1459 171.77);
+	--accent-hover: oklch(87.53% 0.1381 171.25);
+	--accent-light: oklch(92% 0.085 172);
+	--text-primary: oklch(95% 0.005 250);
+	--text-secondary: oklch(82% 0.009 250);
+	--text-muted: oklch(64% 0.011 252);
+	--text-faint: oklch(50% 0.012 255);
+	--bg-primary: oklch(17% 0.009 255);
+	--bg-secondary: oklch(21% 0.011 255);
+	--bg-tertiary: oklch(25.5% 0.012 255);
+	--border-color: oklch(29% 0.013 255);
+	--codeblock-bg: oklch(21% 0.011 255);
 	--glow-alpha: 9%;
 	--noise-alpha: 0.035;
 }
