@@ -204,6 +204,10 @@ Once those dependencies are ready, the ION bitcoin node should start successfull
 
 To test the ION core microservice, check the following identifier using a browser (adjust the hostname to the core microservice’s hostname):
 
+```
+http://[CORE-MICROSERVCE]:3000/identifiers/did:ion:EiClkZMDxPKqC9c-umQfTkR8vvZ9JPhl_xLDI9Nfk38w5w
+```
+
 ### Conclusion
 
 Although this is a much more elaborate deployment than the options currently provided on ION’s GitHub repository ([here](https://github.com/decentralized-identity/ion)), it will require more effort to turn it into something production grade, like firewalls, multiple nodes for redundancy and even only making it available in the virtual private network for internal system operations.

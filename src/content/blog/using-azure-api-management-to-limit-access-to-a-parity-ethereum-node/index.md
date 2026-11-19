@@ -435,6 +435,15 @@ Now we can test the **Ethereum** API using the users API key:
 -   The API key should be placed in the `Ocp-Apim-Subscription-Key` header.
 -   And the body should be set to a value which will be accepted by the Parity Ethereum node, such as:
 
+```json
+{
+    "jsonrpc": "2.0",
+    "method": "eth_blockNumber",
+    "params": [],
+    "id": 1
+}
+```
+
 -   And then click on **Send**.
 
 If everything worked as expected, we should see a result similar to this:
@@ -442,6 +451,10 @@ If everything worked as expected, we should see a result similar to this:
 ![](./1_l27amIwPaQcA8GUL22-krg.png)
 
 Now, if we try to hit **Send** again, before 60 seconds have passed (as we defined in our policy), the operation will fail and although the message in the browser seems related to CORS, if checked was actually returned by the server (such as using the browsers developers tools), we should see the following response:
+
+```json
+{ "statusCode": 429, "message": "Rate limit is exceeded. Try again in 44 seconds." }
+```
 
 That’s it, we create a Parity Ethereum node inside a private virtual network with Azure API Management as its rate limiting gateway.
 
@@ -452,6 +465,11 @@ As the container located in the virtual network required a network profile, whic
 -   Delete the API Management resource.
 -   Delete the Container Instances resource.
 -   Run the following in the command line:
+
+```powershell
+$profile = $(az network profile list --resource-group <RESOURCE GROUP NAME> --query [0].id --output tsv)
+az network profile delete --id $profile -y
+```
 
 -   And lastly, delete the virtual network.
 

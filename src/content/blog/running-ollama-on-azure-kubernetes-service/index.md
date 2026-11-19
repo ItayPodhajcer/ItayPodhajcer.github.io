@@ -39,23 +39,144 @@ For brevity, I will only cover the area of the Terraform script that specificall
 
 Once we have an Azure Kubernetes Service resource defined, we will create the GPU node pool
 
+```hcl
+resource "azurerm_kubernetes_cluster_node_pool" "this" {
+  name                  = "gpu"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.this.id
+  vm_size               = "Standard_NC6s_v3"
+  node_count            = 1
+  vnet_subnet_id        = var.subnet_id
+
+  node_labels = {
+    "nvidia.com/gpu.present" = "true"
+  }
+
+  node_taints = ["sku=gpu:NoSchedule"]
+}
+```
+
 Note the label `“nvidia.com/gpu.present” = “true”`, which scheduling of the `Nvidia Device Plugin` pod on that node, and the `sku=gpu:NoSchedule` taint, which blocks pod who don’t explicitly define that toleration from being scheduled on that node (as we only want pods that require GPU to be scheduled here).
 
 Next, we create two `helm` resources, one for running the `Nvidia Device Plugin` `helm` chart (`https://nvidia.github.io/k8s-device-plugin/nvidia-device-plugin` by Nvidia), and one for running the `Ollama` `helm` chart (`https://otwld.github.io/ollama-helm/ollama` by Outworld)
 
+```hcl
+resource "helm_release" "nvidia_device_plugin" {
+  name             = "nvidia-device-plugin"
+  repository       = "https://nvidia.github.io/k8s-device-plugin"
+  chart            = "nvidia-device-plugin"
+  version          = var.nvidia_device_plugin_chart_version
+  namespace        = var.deployment_name
+  create_namespace = true
+
+  values = [
+    "${templatefile("${path.module}/nvidia-device-plugin-values.tpl", {
+      tag = var.nvidia_device_plugin_tag
+    })}"
+  ]
+}
+```
+
 Which uses the `nvidia-device-plugin-values.tpl` values template file
+
+```yaml
+image:
+  tag: "${tag}"
+
+tolerations:
+  - key: CriticalAddonsOnly
+    operator: Exists
+  - key: nvidia.com/gpu
+    operator: Exists
+    effect: NoSchedule
+  - key: "sku"
+    operator: "Equal"
+    value: "gpu"
+    effect: "NoSchedule"
+```
 
 And
 
+```hcl
+resource "helm_release" "ollama" {
+  name             = local.ollama_service_name
+  repository       = "https://otwld.github.io/ollama-helm/"
+  chart            = "ollama"
+  version          = var.ollama_chart_version
+  namespace        = var.deployment_name
+  create_namespace = true
+
+  values = [
+    "${templatefile("${path.module}/ollama-values.tpl", {
+      tag            = var.ollama_tag
+      port           = var.ollama_port
+      resource_group = azurerm_resource_group.this.name
+      ip_address     = azurerm_public_ip.this.ip_address
+      dns_label_name = local.ollama_service_name
+    })}"
+  ]
+
+  depends_on = [helm_release.nvidia_device_plugin]
+}
+```
+
 Which uses the `ollama-values.tpl` values template file which has `llama3` as the model we will be running
 
+```yaml
+image:
+  tag: "${tag}"
+
+ollama:
+  gpu:
+    enabled: true
+  models:
+    - llama3
+
+service:
+    type: LoadBalancer
+    port: ${port}
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: "${resource_group}"
+      service.beta.kubernetes.io/azure-load-balancer-ipv4: "${ip_address}"
+      service.beta.kubernetes.io/azure-dns-label-name: "${dns_label_name}"
+
+tolerations:
+  - key: "sku"
+    operator: "Equal"
+    value: "gpu"
+    effect: "NoSchedule"
+```
+
 Note the additional annotations that will allow automatically creating a public hostname for this service, which we can later use for testing, using an IP address defined like this
+
+```hcl
+resource "azurerm_public_ip" "this" {
+  name                = "pip-${local.ollama_service_name}-${var.location}"
+  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
+  allocation_method   = "Static"
+  sku                 = "Standard"
+
+  lifecycle {
+    ignore_changes = [
+      domain_name_label
+    ]
+  }
+}
+```
 
 Once all resources are defined, we need to run `terraform apply` to deploy everything to Azure (you might need to do `az login` if haven’t done so lately).
 
 ### Testing The deployment
 
 Now that the deployment is complete, we can use any tool for sending HTTP `POST` requests to our cluster, for example `cUrl`:
+
+```bash
+curl http://<ollama-service-hostname>:11434/api/generate -d '{
+  "model": "llama3",
+  "prompt": "Why is the sky blue?",
+  "stream": false
+}'
+```
 
 And get the generated response back from the model, with additional statistical information about the generation process.
 

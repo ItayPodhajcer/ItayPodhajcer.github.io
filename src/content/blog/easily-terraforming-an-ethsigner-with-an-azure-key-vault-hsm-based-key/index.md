@@ -158,7 +158,15 @@ All is left now, login to Azure using `az login` and then run the script using `
 
 We can perform to tests once the EthSigner container is up and running. The first is to make sure that the process is up and running as expected by calling:
 
+```bash
+curl -X GET http://127.0.0.1:8545/upcheck
+```
+
 Next, we can check that EthSigner is passing the transactions to the downstream host by calling:
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":51}' http://127.0.0.1:8545
+```
 
 ### Conclusion
 

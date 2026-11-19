@@ -84,6 +84,10 @@ And then the build tasks, which include:
 -   Grand execution permissions to the service’s files
 -   Now, if you need to run your service with a port below 1024, you will need to add this command at this point:
 
+```bash
+sudo setcap CAP_NET_BIND_SERVICE=+eip ${local.destination_directory}/${var.executable_name}
+```
+
 -   Reload the daemon
 -   Enable the service
 -   Start the service
@@ -180,9 +184,21 @@ variable "executable_name" {
 
 Creating the service principal is fairly easy using the Azure CLI. The following command will create the principal associated to the Contributor role, as Packer will be deploying temporary resources to create the image and will also store the image in an existing resource group:
 
+```bash
+az ad sp create-for-rbac --name github-actions-packer --role Contributor --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
+```
+
 You will also need your Azure subscription ID, which can be retrieved with:
 
+```bash
+az account show --query "{ subscription_id: id }"
+```
+
 By the way, if you are using multiple subscriptions, and need to change the one that is being used by the CLI, you can run:
+
+```bash
+az account set --subscription [SUBSCRIPTION-ID]
+```
 
 We will need to keep the output from the above commands, as it will be required when we define our GitHub Actions workflow.
 
