@@ -288,6 +288,10 @@ module "etcd_node3" {
 
 Now that the configuration is complete, we can run Terraform to deploy it:
 
+```bash
+terraform apply <ROOT CONFIGURATION FOLDER PATH>
+```
+
 Once the configuration is validated, you will be asked to approve the execution of the deployment. Note that even after the deployment is complete, it might take a few minutes until all three nodes are running (the containers will restart until all the required DNS records can be resolved).
 
 ### Testing The Nodes
@@ -296,13 +300,30 @@ To test the nodes, will be connecting to one of them, set a key, and then connec
 
 To connect to a node you can run the following Azure CLI command, and you will get a command prompt on the remote container:
 
+```bash
+az container exec -g <RESOURCE GROUP NAME> --name <COTAINER RESOURCE NAME> --exec-command "/bin/sh"
+```
+
 Once connected, you will need to run the following command on the first node to write a key:
+
+```bash
+etcdctl put mykey myvalue
+```
 
 The result of the command should be `OK`.
 
 Once you created the key, connect to the other nodes and run the following command to get the value of the key you created on the first node:
 
+```bash
+etcdctl get mykey
+```
+
 You should get a result similar to:
+
+```
+mykey
+myvalue
+```
 
 This result indicates that the nodes can communicate with each other and synchronize the data.
 

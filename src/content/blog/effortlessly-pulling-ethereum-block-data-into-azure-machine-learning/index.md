@@ -30,9 +30,21 @@ A complete example of the Azure Function and a Terraform script that can be used
 
 We will start by creating a new C# HTTP Trigger based Azure Function called `GetTransactions`\`, using Azure Functions Core Tools’ `func` CLI tool:
 
+```bash
+func init --worker-runtime dotnet
+```
+
 Note that the project name is taken from the name of the containing directory.
 
+```bash
+func new -l C# -n GetTransactions
+```
+
 Next, we will add a reference to `Nethereum`, .Net based library for interacting with Ethereum based networks:
+
+```bash
+dotnet add .\[PROJECT-NAME].csproj package Nethereum.Web3
+```
 
 Replace `PROJECT-NAME` with the name of the project you created.
 
@@ -75,11 +87,23 @@ public static class GetTransactions
 
 And once we are done writing the code, we can build and publish the function to a local folder:
 
+```bash
+dotnet publish --configuration Release /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+```
+
 ### Testing the Function
 
 To easiest way to test the function is using the Terraform script included with the example GitHub repository mentioned above, by first logging in to Azure:
 
+```bash
+az login
+```
+
 And then running the Terraform script:
+
+```bash
+terraform apply -auto-approve .\eng\
+```
 
 Once the infrastructure is deployed, we can archive the content of thepublished Azure Function directory (should be /src/bin/Release/netcoreapp3.1/publish) and deploy it to the newly created function app.
 

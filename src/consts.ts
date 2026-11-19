@@ -5,11 +5,14 @@ export const SITE_TITLE = 'Itay Podhajcer';
 // Browser-tab / SEO title for the home page (other pages append `· ${SITE_TITLE}`).
 export const HOME_TITLE = 'Itay Podhajcer · Personal Blog';
 export const SITE_DESCRIPTION =
-	'Tech expert with 20+ years of experience across roles such as CTO, Chief Architect, and Consultant. 3× Microsoft MVP, passionate blogger, and open-source contributor.';
+	'Founder & CEO of Swale, with 20+ years across roles such as CTO, Chief Architect, and Consultant. 3× Microsoft MVP, passionate blogger, and open-source contributor.';
 export const AUTHOR_NAME = 'Itay Podhajcer';
-export const AUTHOR_TITLE = 'Chief Architect @ Velocity Career Labs · 3× Microsoft MVP';
+export const AUTHOR_ROLE = 'Founder & CEO';
+export const AUTHOR_COMPANY = { name: 'Swale', url: 'https://swale.io' };
+// Plain-text form for alt text; pages render the linked form via <AuthorTitle />.
+export const AUTHOR_TITLE = `${AUTHOR_ROLE} @${AUTHOR_COMPANY.name}`;
 export const AUTHOR_DESCRIPTION =
-	'Tech expert with 20+ years of experience across roles such as CTO, Chief Architect, and Consultant. 3× Microsoft MVP, passionate blogger, and open-source contributor.';
+	'Building Swale: big compute, big storage, zero infrastructure effort. Before that, 20+ years across roles such as CTO, Chief Architect, and Consultant. 3× Microsoft MVP, passionate blogger, and open-source contributor.';
 
 // Round avatar (GitHub profile picture) used on the home and about pages.
 export const AUTHOR_AVATAR = '/avatar.png';

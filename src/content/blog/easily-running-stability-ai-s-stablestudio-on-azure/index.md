@@ -35,21 +35,89 @@ A complete Terraform script that creates a resource group and an Azure Container
 
 We will start by creating a local that will hold the commands needed to inside the container to pull [StableStudio’s GitHub repository](https://github.com/Stability-AI/StableStudio), build the code and run the app:
 
+```hcl
+locals {
+  port = 3000
+  commands = [
+    "git clone https://github.com/Stability-AI/StableStudio.git",
+    "cd StableStudio",
+    "yarn",
+    "yarn dev --host"
+  ]
+}
+```
+
 Note that we also defined a `port` local as it’s good practice in case the port can be changed in the future, so we will only need to change the value in one place.
 
 Next, we create a resource group:
 
+```hcl
+resource "azurerm_resource_group" "this" {
+  name     = "rg-${var.deployment_name}-${var.location}"
+  location = var.location
+}
+```
+
 And lastly, we will create the Azure Container Instances resource to run StableStudio:
+
+```hcl
+resource "azurerm_container_group" "this" {
+  name                = "aci-${var.deployment_name}-${var.location}"
+  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
+  ip_address_type     = "Public"
+  os_type             = "Linux"
+  dns_name_label      = "${var.deployment_name}-${var.location}"
+
+  container {
+    name   = "${var.deployment_name}-container"
+    image  = "node:latest"
+    cpu    = "2"
+    memory = "4"
+
+    commands = [
+      "sh",
+      "-c",
+      join(" && ", local.commands)
+    ]
+
+    ports {
+      port     = local.port
+      protocol = "TCP"
+    }
+  }
+}
+```
 
 Note that we are using a generic `node` image and combine all the commands in to one shell command that will be executed by the container when it starts.
 
 We will also define a variables file with some defaults:
 
+```hcl
+variable "deployment_name" {
+  default = "stablestudio"
+}
+
+variable "location" {
+  default = "eastus"
+}
+```
+
 And an outputs file that will have the final URL to access our StableStudio instance:
+
+```hcl
+output "stablestudio_url" {
+  value = "http://${azurerm_container_group.this.fqdn}:${local.port}"
+}
+```
 
 ### Testing The Deployment
 
 All we need to do now, is run the following Terraform command:
+
+```bash
+terraform apply -var="deployment_name=mystablestudio"
+```
 
 Note that although we defined a default value for `deployment_name`, we should set it to a unique value for our deployment to avoid collisions.
 

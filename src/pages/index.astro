@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import AuthorTitle from '../components/AuthorTitle.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -50,7 +51,7 @@ const formatDate = (date: Date) => {
 				</div>
 				<div class="min-w-0 flex-1">
 					<p class="rise m-0 mb-2 font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-accent" style="--d: .12s">
-						{AUTHOR_TITLE}
+											<AuthorTitle />
 					</p>
 					<h1 class="rise m-0 mb-3 text-[2.1rem] font-extrabold leading-[1.1] tracking-[-0.035em] text-heading max-sm:text-[1.7rem]" style="--d: .18s">
 						Hello, I'm {AUTHOR_NAME}

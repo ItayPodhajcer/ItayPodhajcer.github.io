@@ -21,7 +21,6 @@ const about = defineCollection({
 	schema: () =>
 		z.object({
 			name: z.string(),
-			title: z.string(),
 		}),
 });
 

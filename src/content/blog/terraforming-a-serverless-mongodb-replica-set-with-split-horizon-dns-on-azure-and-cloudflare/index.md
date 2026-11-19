@@ -21,6 +21,10 @@ What’s non-orthodox about it? Well, usually a database is not exposed directly
 
 If you’ve worked with MongoDB replica sets before, you should be familiar with the replica set connection string which includes multiple hosts:
 
+```
+mongodb://mongodb0.example.com:27017,mongodb1.example.com:27017,mongodb2.example.com:27017/?replicaSet=myRepl
+```
+
 This is where things get complicated, because if we need the hosts to be available from both the internal network and the external world, we need to use hosts names that can be resolved from both the internal network and the external world, and they have to be the same host names, as MongoDB replica sets are only aware of the host names that were used when they were joined to the replica set, so two different names per host won’t work.
 
 ### The Solution — Split Horizon DNS
@@ -154,6 +158,10 @@ module "cloudflare_record" {
 ### Deployment Testing
 
 To test the deployment, a MongoDB connection string similar to the following will be required (ensure you set node names and replica set name to whatever values you used):
+
+```
+mongodb://mongo1.example.com:27017,mongo2.example.com:27017,mongo3.example.com:27017/?replicaSet=mongo-set
+```
 
 And either use the `mongo` command line tool, or something like MongoDBCompass which is available here:
 

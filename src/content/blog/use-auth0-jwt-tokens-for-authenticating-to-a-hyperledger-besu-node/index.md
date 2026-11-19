@@ -104,6 +104,10 @@ openssl x509 -pubkey -noout -in cert.pem  > pubkey.pem
 
 To run the Hyperledger Besu node, with JWT authentication enabled and the public key mounted in to the container we will use a command similar to the following (we will only be using the JSON-RPC HTTP endpoint available through port `8545`):
 
+```bash
+docker run -v <PATH TO PUBLIC KEY FILE>pubkey.pem:/tmp/cert/pubkey.pem -p 8545:8545 --name besu hyperledger/besu --rpc-http-enabled --rpc-http-authentication-enabled --rpc-http-authentication-jwt-public-key-file=/tmp/cert/pubkey.pem
+```
+
 ### Testing The Flow
 
 We will define 2 requests in POSTMAN, one for getting a token from Auth0, which will be as follows:  
@@ -111,6 +115,16 @@ Method: **POST
 **Headers:   
 \- **Content-Type: application/json  
 **JSON Body:
+
+```json
+{
+    "grant_type": "password",
+    "username": "<USER EMAIL>",
+    "password": "<USER PASSWORD>",
+    "client_id": "<AUTH0 CLIENT ID>",
+    "audience": "https://hyperledger-besu/"
+}
+```
 
 Note that the `audience` field is populated by identifier of the Hyperledger Besu API we defined.
 
@@ -120,6 +134,15 @@ Headers:
 \- **Content-Type: application/json  
 **\- **Authorization: Bearer <ACCESS TOKEN>**  
 Body:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "method": "eth_blockNumber",
+    "params": [],
+    "id": 1
+}
+```
 
 Now you can try executing the request both with and without the authorization header. We should see a block number returned when the header is sent and an `Unauthorized` error when when it’s not sent with the request.
 

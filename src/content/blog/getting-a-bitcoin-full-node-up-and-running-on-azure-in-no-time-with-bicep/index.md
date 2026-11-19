@@ -319,7 +319,15 @@ module vm 'modules/vm.bicep' = {
 
 First, we need to generate a key pair that can be used for SSH connections, and we will do that by running the following command:
 
+```bash
+ssh-keygen -m PEM -t rsa -b 4096
+```
+
 Now that we have a key, when can run the command that executes our script and deploys the resources:
+
+```bash
+az deployment sub create --name dep-bitcoinvm --location eastus --template-file main.bicep --parameters 'sshPublicKey=****' 'bitcoinPassword=****'
+```
 
 Make sure you set `sshPublicKey` to the contents of the `.pub` file that was generated in the previous step, and `bitcoinPassword` to whatever value you want to use as the password for your Bitcoin full node.
 

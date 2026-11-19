@@ -39,23 +39,163 @@ As always, the complete code implementation and deployment script can be found i
 
 We will keep this very simple, a resource group, an Azure AI Services account, an Azure AI Services deployment, a few variables for the deployment name and region, and outputs so we can read the AI service endpoint and access key:
 
+```hcl
+provider "azurerm" {
+  features {}
+}
+
+variable "deployment_name" {
+  default = "uniswapv3assitant"
+}
+
+variable "location" {
+  default = "eastus"
+}
+
+resource "azurerm_resource_group" "this" {
+  name     = "rg-${var.deployment_name}-${var.location}"
+  location = var.location
+}
+
+resource "azurerm_cognitive_account" "this" {
+  name                = "cog-${var.deployment_name}-${var.location}"
+  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
+  kind                = "OpenAI"
+  sku_name            = "S0"
+}
+
+resource "azurerm_cognitive_deployment" "this" {
+  cognitive_account_id = azurerm_cognitive_account.this.id
+  name                 = var.deployment_name
+
+  model {
+    format  = "OpenAI"
+    name    = "gpt-4-32k"
+    version = "0613"
+  }
+
+  scale {
+    type     = "Standard"
+    capacity = 60
+  }
+}
+
+output "endpoint" {
+  value = azurerm_cognitive_account.this.endpoint
+}
+
+output "primary_access_key" {
+  value     = azurerm_cognitive_account.this.primary_access_key
+  sensitive = true
+}
+```
+
 Note that we set the capacity of the `azurerm_cognitive_deployment` to `60`, which is the maximum allowed by default, as we will be dealing with big text results (the results of the queries) and we don’t want to get throttled.
 
 Once the script is done, just execute `terraform apply -auto-approve` and that should deploy the resources to your Azure subscription (you might need to use `az login` before running the script to log in to Azure).
 
 To get the endpoint and access key we execute:
 
+```bash
+terraform output endpoint
+> Will return the HTTP endpoint
+terraform output primary_access_key
+> Will return the access key
+```
+
 ### The App
 
 Now we can start with the app. create a new .NET console using the following command:
 
+```bash
+dotnet new console
+```
+
 And add a reference to the `Microsoft.SemanticKernel` nuget package:
 
+```bash
+dotnet add package Microsoft.SemanticKernel
+```
+
 Once our project is setup, we can begin writing the code, starting from the Semantic Kernel plugin, which will be the one actually sending the queries to the UniswapV3 subgraph endpoint:
+
+```csharp
+using System.ComponentModel;
+using System.Net.Http.Json;
+using Microsoft.SemanticKernel;
+
+public class UniswapV3SubgraphPlugin
+{
+  const string UniswapV3SubgraphEndpoint = "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3";
+
+  private readonly HttpClient _client = new();
+
+  [KernelFunction]
+  [Description("Queries the Uniswap V3 subgraph using GraphQL queries and returns the result in json format.")]
+  public async Task<string> QueryAsync([Description("The GraphQL query")] string query)
+  {
+    HttpRequestMessage request = new(HttpMethod.Post, UniswapV3SubgraphEndpoint)
+    {
+      Content = JsonContent.Create(new { query = query })
+    };
+
+    var response = await _client.SendAsync(request).ConfigureAwait(false);
+    var result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+    return result;
+  }
+}
+```
 
 What makes the `QueryAsync` functions special, is the `KernelFunction` attribute, combined with the `Description` attributes for the function, which describes what the function does, and the function’s argument which describes what that argument should receive. Those descriptions are the ones that are used to determine how the function should be used by the kernel which we will be creating in the next section.
 
 Now that we have the plugin, we can create the program that will be using it:
+
+```csharp
+using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
+
+var builder = Kernel.CreateBuilder();
+
+var openAiDeployment = Environment.GetEnvironmentVariable("OPENAI_DEPOYMENT");
+var openAiUri = Environment.GetEnvironmentVariable("OPENAI_URI");
+var openAiApiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+
+builder.Services.AddAzureOpenAIChatCompletion(
+  deploymentName: openAiDeployment,
+  endpoint: openAiUri,
+  apiKey: openAiApiKey);
+
+builder.Plugins.AddFromType<UniswapV3SubgraphPlugin>();
+
+var kernel = builder.Build();
+
+ChatHistory history = [];
+
+var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
+
+while (true)
+{
+    Console.Write(">> ");
+    history.AddUserMessage(Console.ReadLine()!);
+
+    OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new()
+    {
+        ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
+    };
+
+    var result = await chatCompletionService.GetChatMessageContentAsync(
+        history,
+        executionSettings: openAIPromptExecutionSettings,
+        kernel: kernel);
+
+    Console.WriteLine("<< " + result);
+
+    history.AddAssistantMessage(result.Content);
+}
+```
 
 We read the deployment name, endpoint and access key, which were created by the Terraform script, from environment variables and use them to initialize Azure OpenAI chat completion.
 
