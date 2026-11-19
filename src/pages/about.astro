@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import AuthorTitle from '../components/AuthorTitle.astro';
 import { AUTHOR_AVATAR } from '../consts';
 
 const aboutEntries = await getCollection('about');
@@ -32,7 +33,7 @@ const { Content } = aboutContent ? await render(aboutContent) : { Content: null 
 							{aboutContent.data.name}
 						</h1>
 						<p class="mb-8 text-center text-base font-medium text-accent">
-							{aboutContent.data.title}
+							<AuthorTitle />
 						</p>
 					<article class="about-content text-body">
 						{Content && <Content />}
@@ -45,7 +46,8 @@ const { Content } = aboutContent ? await render(aboutContent) : { Content: null 
 	</body>
 </html>
 
-<style>
+<style is:global>
+	/* Global so these reach the markdown rendered by <Content />; every rule is namespaced by `.about-content`. */
 	.about-content {
 		font-family: var(--font-serif);
 		font-size: 1.0625rem;
